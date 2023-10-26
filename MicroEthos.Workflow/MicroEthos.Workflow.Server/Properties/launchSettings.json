@@ -1,0 +1,28 @@
+﻿{
+  "$schema": "http://json.schemastore.org/launchsettings.json",
+  "profiles": {
+    "MicroEthos.Workflow.Server": {
+      "commandName": "Project",
+      "dotnetRunMessages": "true",
+      "launchBrowser": false,
+      "environmentVariables": {
+        "MONGO_DB_URL": "mongodb://178.63.97.116:27021",
+        "MONGO_DB_NAME": "workflow",
+        "REDIS_DB_CONNECTION_STRING": "178.63.97.116:8030,password=redis123456@",
+        "APP_IP": "localhost",
+        "APP_ID": "6100",
+        "APP_PORT": "6100",
+        "APP_ENV": "Development",
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "KAFKA_TOPIC_GROUP": "MICRO_ETHOS_WORKFLOW",
+        "KAFKA_HOST": "178.63.97.116:29093",
+        "KAFKA_USER_NAME": "root",
+        "KAFKA_USER_PASS": "nats123456@",
+        
+        "RABBIT_SERVER": "178.63.97.116",
+        "RABBIT_USERNAME": "admin",
+        "RABBIT_PASSWORD": "Nyo89qjLf2BMbRYaJ3UJt1hx2eFKoXcBD9Cy"
+      }
+    }
+  }
+}

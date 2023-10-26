@@ -1,0 +1,83 @@
+.ParameterListBackground {
+  padding: grid;
+  min-height: 100%;
+  padding: 2px;
+}
+
+.ParameterListBackgroundDragging {
+  background: lightblue;
+}
+
+.ParameterDiv {
+  user-select: none;
+  padding: 7px;
+  margin: 0;
+
+  /* change background colour if dragging */
+  background: transparent;
+}
+
+.ParameterDivDragging {
+  background: transparent;
+}
+
+.ParameterListItem {
+  background-color: #404040;
+  color: white;
+  padding: 3px;
+  border: 1px solid #202020;
+  border-radius: 4px;
+  margin: 0px;
+
+  display: grid;
+  width: 100%;
+  grid-template-columns: 200px 1fr;
+}
+
+.ParameterFirstItem {
+  padding-right: 8px;
+}
+
+.ParameterSecondItem {
+  padding: 0 8px 0 8px;
+  border-left: 1px solid white;
+}
+
+.ParameterSecondItem .Remove {
+  color: pink;
+  float: right;
+  cursor: pointer;
+  width: 12px;
+}
+
+.ParameterSecondItem .Remove.hover {
+  color: red;
+}
+
+
+.ParameterRow {
+  display: grid;
+
+  grid-template-columns: 30% 70%;
+  grid-row-gap: 3px;
+}
+
+.ParameterCellTitle {
+  float: left;
+  padding-left: 5px
+}
+
+.ParameterCellValue {
+  float: left;
+}
+
+.ParameterCellValue > .ParameterValue {
+  width: 100%;
+}
+
+.ParameterMonoText {
+  font-family: monospace;
+  font-size: 11pt;
+  width: 100%;
+  resize:vertical;
+}

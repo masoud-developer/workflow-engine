@@ -1,0 +1,69 @@
+stages:
+  - build
+  - test
+  - deploy
+  - upgrade
+variables:
+  SOURCE_CODE_PATH: .
+  NUGET_PACKAGES_DIRECTORY: .nuget
+  ME_REGISTRY_DOMAIN: 'registry.microethos.com'
+  ME_REGISTRY_HOST: 'https://registry.microethos.com'
+  DOCKER_HOST: 'tcp://thedockerhost:2375/'
+  DOCKER_DRIVER: overlay2
+  DOCKER_TLS_CERTDIR: ''
+cache:
+  key: $CI_JOB_STAGE-$CI_COMMIT_REF_SLUG
+  paths:
+    - $NUGET_PACKAGES_DIRECTORY
+compile_source:
+  image: 'mcr.microsoft.com/dotnet/sdk:latest'
+  stage: build
+  script:
+    - dotnet nuget add source $NUGET_SERVER --name "micro-ethos-nuget" --username $NUGET_USER --password $NUGET_PASS --store-password-in-clear-text
+    - dotnet restore --packages $NUGET_PACKAGES_DIRECTORY
+    - dotnet build --no-restore
+unit_tests:
+  image: 'mcr.microsoft.com/dotnet/sdk:latest'
+  stage: test
+  script:
+    - cd MicroEthos.Workflow.Tests.Unit && dotnet test --no-restore
+integration_tests:
+  image: 'mcr.microsoft.com/dotnet/sdk:latest'
+  stage: test
+  script:
+    - cd MicroEthos.Workflow.Tests.Integration && dotnet test --no-restore
+build_docker_image:
+  image: 'docker:stable'
+  stage: deploy
+  services:
+    - name: 'docker:dind'
+      alias: thedockerhost
+  script:
+    - 'export VERSION_TAG="v1.0.$(date ''+%Y_%m_%d_%H%M'')"'
+    - 'docker login $ME_REGISTRY_HOST -u $ME_REGISTRY_USER -p $ME_REGISTRY_PASSWORD'
+    - 'docker build --build-arg NUGET_SERVER=${NUGET_SERVER} --build-arg NUGET_USER=${NUGET_USER} --build-arg NUGET_PASS=${NUGET_PASS} -t $ME_REGISTRY_DOMAIN/microethos_workflow_server:latest -t $ME_REGISTRY_DOMAIN/microethos_workflow_server:${VERSION_TAG} . -f $SOURCE_CODE_PATH/Dockerfile-Server'
+    - 'docker push $ME_REGISTRY_DOMAIN/microethos_workflow_server:latest'
+    - 'docker push $ME_REGISTRY_DOMAIN/microethos_workflow_server:${VERSION_TAG}'
+    - 'docker build --build-arg NUGET_SERVER=${NUGET_SERVER} --build-arg NUGET_USER=${NUGET_USER} --build-arg NUGET_PASS=${NUGET_PASS} -t $ME_REGISTRY_DOMAIN/microethos_workflow_background:latest -t $ME_REGISTRY_DOMAIN/microethos_workflow_background:${VERSION_TAG} . -f $SOURCE_CODE_PATH/Dockerfile-Background'
+    - 'docker push $ME_REGISTRY_DOMAIN/microethos_workflow_background:latest'
+    - 'docker push $ME_REGISTRY_DOMAIN/microethos_workflow_background:${VERSION_TAG}'
+    - 'docker logout $ME_REGISTRY_HOST'
+    - 'echo "VERSION_TAG=$VERSION_TAG" >> build_version.env'
+  artifacts:
+    reports:
+      dotenv: build_version.env
+publish_to_remotes:
+  image: alpine:latest
+  stage: upgrade
+  before_script:
+    - 'command -v ssh-agent >/dev/null || ( apk add --update openssh )'
+    - 'eval $(ssh-agent -s)'
+    - 'echo "$SSH_PRIVATE_KEY" | tr -d ''\r'' | ssh-add -'
+    - 'mkdir -p ~/.ssh'
+    - 'chmod 700 ~/.ssh'
+    - 'ssh-keyscan $VM_IPADDRESS >> ~/.ssh/known_hosts'
+    - 'chmod 644 ~/.ssh/known_hosts'
+  script:
+    - 'ssh $SSH_USER@$VM_IPADDRESS "sh /home/services/shell-scripts/publish-workflow.sh $VERSION_TAG"'
+  dependencies:
+    - build_docker_image

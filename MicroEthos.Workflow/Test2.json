@@ -1,0 +1,26 @@
+{
+  "Id": "d232b93c-6a03-4069-9d0d-b3eecb160748",
+  "Name": "Test1",
+  "Version": 1,
+  "Steps": [
+    {
+      "Id": "MyWhileStep",
+      "StepType": "WorkflowCore.Primitives.If, WorkflowCore",
+      "Inputs": {
+        "Condition": "3 > 1"
+      },
+      "Do": [
+        [
+          {
+            "Id": "ShowResult",
+            "StepType": "MicroEthos.Workflow.Business.Workflow.Steps.ShowMessageStep, MicroEthos.Workflow.Business",
+            "Inputs": {
+              "Data": "2"
+            }
+          }
+        ]
+      ]
+    }
+  ],
+  "DataType": "MicroEthos.Workflow.Models.Workflow.WorkflowStateModel, MicroEthos.Workflow.Models"
+}

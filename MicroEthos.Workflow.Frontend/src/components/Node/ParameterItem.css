@@ -1,0 +1,14 @@
+.ParameterNameCell {
+  float: left;
+  padding-left: 5px
+}
+
+.ParameterSecondItemValue > .Value {
+  width: 100%;
+}
+
+.ParameterSecondItemValue > .Value,textarea {
+  font-family: monospace;
+  font-size: 12pt;
+  resize: vertical;
+}

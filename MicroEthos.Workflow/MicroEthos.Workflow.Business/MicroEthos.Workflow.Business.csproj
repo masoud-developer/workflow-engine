@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Jint" Version="2.11.58" />
+        <PackageReference Include="MicroEthos.Common" Version="1.1.6" />
+        <PackageReference Include="MicroEthos.Common.Providers.Queue.RabbitMQ" Version="1.0.23" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+        <PackageReference Include="NJsonSchema" Version="10.8.0" />
+        <PackageReference Include="NJsonSchema.CodeGeneration" Version="10.8.0" />
+        <PackageReference Include="NJsonSchema.CodeGeneration.CSharp" Version="10.8.0" />
+        <PackageReference Include="RestSharp" Version="108.0.3" />
+        <PackageReference Include="System.Linq.Dynamic.Core" Version="1.2.23" />
+        <PackageReference Include="Microsoft.CodeAnalysis.Compilers" Version="4.4.0" />
+        <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.4.0" />
+
+        <PackageReference Include="WorkflowCore" Version="3.7.0" />
+        <PackageReference Include="WorkflowCore.DSL" Version="3.7.0" />
+        <PackageReference Include="WorkflowCore.Persistence.MongoDB" Version="3.7.0" />
+        <PackageReference Include="WorkflowCore.Providers.Elasticsearch" Version="3.7.0" />
+        <PackageReference Include="WorkflowCore.Providers.Redis" Version="3.7.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\MicroEthos.Workflow.DataAccess\MicroEthos.Workflow.DataAccess.csproj" />
+    </ItemGroup>
+
+</Project>

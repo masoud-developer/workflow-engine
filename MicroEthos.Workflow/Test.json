@@ -1,0 +1,40 @@
+{
+  "Id": "AddWorkflow",
+  "Name": "Test1",
+  "Version": 1,
+  "DataType": "MicroEthos.Workflow.Models.Workflow.WorkflowStateModel, MicroEthos.Workflow.Models",
+  "Steps": [
+    {
+      "Id": "Add",
+      "StepType": "MicroEthos.Workflow.Business.Workflow.Steps.AddNumberStep, MicroEthos.Workflow.Business",
+      "Inputs": {
+        "Input1": "data.State[\"x\"]",
+        "Input2": "data.State[\"y\"]"
+      },
+      "Outputs": {
+        "data.State[\"z\"]": "step.Output"
+      },
+      "SelectNextStep": {
+        "ShowResult": "Convert.ToInt32(data.State[\"x\"]) < 10",
+        "ShowResult2": "Convert.ToInt32(data.State[\"x\"]) >= 10"
+      }
+    },
+    {
+      "Id": "ShowResult",
+      "StepType": "MicroEthos.Workflow.Business.Workflow.Steps.ShowMessageStep, MicroEthos.Workflow.Business",
+      "Inputs": {
+        "Data": "2"
+      }
+    },
+    {
+      "Id": "ShowResult2",
+      "StepType": "MicroEthos.Workflow.Business.Workflow.Steps.ShowMessageStep, MicroEthos.Workflow.Business",
+      "Inputs": {
+        "Data": "22"
+      },
+      "SelectNextStep": {
+        "ShowResult": "true"
+      }
+    }
+  ]
+}

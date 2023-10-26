@@ -1,0 +1,51 @@
+.OutputItem {
+  display: grid;
+  grid-template-columns: 40% 60%;
+}
+
+.OutputNameCell {
+  display: contents;
+  float: left;
+  padding-left: 10px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.OutputItemPreview {
+  color: #337ab7;
+  cursor: pointer;
+}
+
+.OutputItemPreview .file-type-icon {
+    width: 10px;
+    height: 10px;
+    padding-right: 3px;
+}
+
+.OutputItemPreview img {
+  vertical-align:middle;
+}
+
+.OutputItemPreview:hover {
+  text-decoration: underline;
+  color: white;
+}
+
+.OutputValueCell {
+  float: right;
+  cursor: pointer;
+  color: lightgray;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.OutputValueCell:hover {
+  text-decoration: underline;
+  color: white;
+}
+
+.OutputValueCell img {
+  vertical-align:middle;
+}

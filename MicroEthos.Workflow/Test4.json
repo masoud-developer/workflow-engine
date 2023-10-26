@@ -1,0 +1,47 @@
+{
+  "Id": "2ea65950-a9bd-4497-b5f2-e5df94a14d75",
+  "Name": "abc",
+  "Version": 1,
+  "Steps": [
+    {
+      "Id": "EmailReceivedEvent",
+      "StepType": "WorkflowCore.Primitives.WaitFor, WorkflowCore",
+      "NextStepId": "AddNumberStep",
+      "Inputs": {
+        "EventName": "\"EmailReceived\"",
+        "EventKey": "\"EmailReceived\""
+      },
+      "Outputs": {
+        "$$AddNumberStep_Input3_In": "step.EventData"
+      }
+    },
+    {
+      "Id": "AddNumberStep",
+      "StepType": "MicroEthos.Workflow.Business.Workflow.Steps.AddNumberStep, MicroEthos.Workflow.Business",
+      "NextStepId": "MyIfStep",
+      "Inputs": {
+        "Input1": "2",
+        "Input2": "3"
+      },
+      "Outputs": {
+        "$$ShowMessageStep_Data_In": "step.Output"
+      }
+    },
+    {
+      "Id": "MyIfStep",
+      "StepType": "WorkflowCore.Primitives.If, WorkflowCore",
+      "Inputs": {
+        "Condition": "Convert.ToInt32(data.State.Items[\"$$AddNumberStep_Output_Out\"]) > 3"
+      },
+      "Do": [
+        [
+          {
+            "Id": "ShowMessageStep",
+            "StepType": "MicroEthos.Workflow.Business.Workflow.Steps.ShowMessageStep, MicroEthos.Workflow.Business"
+          }
+        ]
+      ]
+    }
+  ],
+  "DataType": "MicroEthos.Workflow.Models.Workflow.WorkflowStateModel, MicroEthos.Workflow.Models"
+}

@@ -1,0 +1,38 @@
+FROM mcr.microsoft.com/dotnet/sdk:7.0 AS base
+WORKDIR /app
+
+FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
+WORKDIR /src
+
+ARG NUGET_SERVER
+ARG NUGET_USER
+ARG NUGET_PASS
+RUN dotnet nuget add source $NUGET_SERVER --name "micro-ethos-nuget" --username $NUGET_USER --password $NUGET_PASS --store-password-in-clear-text
+
+COPY ["MicroEthos.Workflow.Abstraction/MicroEthos.Workflow.Abstraction.csproj", "MicroEthos.Workflow.Abstraction/"]
+RUN dotnet restore "MicroEthos.Workflow.Abstraction/MicroEthos.Workflow.Abstraction.csproj"
+COPY ["MicroEthos.Workflow.Abstraction/", "MicroEthos.Workflow.Abstraction/"]
+
+COPY ["MicroEthos.Workflow.DataAccess/MicroEthos.Workflow.DataAccess.csproj", "MicroEthos.Workflow.DataAccess/"]
+RUN dotnet restore "MicroEthos.Workflow.DataAccess/MicroEthos.Workflow.DataAccess.csproj"
+COPY ["MicroEthos.Workflow.DataAccess/", "MicroEthos.Workflow.DataAccess/"]
+
+COPY ["MicroEthos.Workflow.Business/MicroEthos.Workflow.Business.csproj", "MicroEthos.Workflow.Business/"]
+RUN dotnet restore "MicroEthos.Workflow.Business/MicroEthos.Workflow.Business.csproj"
+COPY ["MicroEthos.Workflow.Business/", "MicroEthos.Workflow.Business/"]
+
+COPY ["MicroEthos.Workflow.BackgroundService/MicroEthos.Workflow.BackgroundService.csproj", "MicroEthos.Workflow.BackgroundService/"]
+RUN dotnet restore "MicroEthos.Workflow.BackgroundService/MicroEthos.Workflow.BackgroundService.csproj"
+COPY ["MicroEthos.Workflow.BackgroundService/", "MicroEthos.Workflow.BackgroundService/"]
+
+
+WORKDIR "/src/MicroEthos.Workflow.BackgroundService"
+RUN dotnet build "MicroEthos.Workflow.BackgroundService.csproj" -c Release -o /app/build
+
+FROM build AS publish
+RUN dotnet publish "MicroEthos.Workflow.BackgroundService.csproj" -c Release -o /app/publish
+
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app/publish .
+ENTRYPOINT ["dotnet", "MicroEthos.Workflow.BackgroundService.dll"]

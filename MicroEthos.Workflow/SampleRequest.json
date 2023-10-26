@@ -1,0 +1,41 @@
+{
+  "Name": "abc",
+  "Version": 1,
+  "Steps": [
+    {
+      "Id": "SendNotification",
+      "StepType": "MicroEthos.Workflow.Business.Workflow.Steps.Dynamic.Notification.Send.SendStep, Notification_Module_a593c619-d3e6-45a3-8ca4-2b31b255a0cf",
+      "NextStepId": "AddNumberStep",
+      "Outputs": {
+        "$$AddNumberStep_Input3_In": "step.EventData"
+      }
+    },
+    {
+      "Id": "AddNumberStep",
+      "StepType": "MicroEthos.Workflow.Business.Workflow.Steps.AddNumberStep, MicroEthos.Workflow.Business",
+      "NextStepId": "MyIfStep",
+      "Inputs": {
+        "Input1": "2",
+        "Input2": "3"
+      },
+      "Outputs": {
+        "$$ShowMessageStep_Data_In": "step.Output"
+      }
+    },
+    {
+      "Id": "MyIfStep",
+      "StepType": "WorkflowCore.Primitives.If, WorkflowCore",
+      "Inputs": {
+        "Condition": "$$AddNumberStep_Output_Out > 3"
+      },
+      "Do": [
+        [
+          {
+            "Id": "ShowMessageStep",
+            "StepType": "MicroEthos.Workflow.Business.Workflow.Steps.ShowMessageStep, MicroEthos.Workflow.Business"
+          }
+        ]
+      ]
+    }
+  ]
+}

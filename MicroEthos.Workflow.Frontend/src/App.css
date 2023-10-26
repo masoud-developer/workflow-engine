@@ -1,0 +1,92 @@
+html{
+  background-color: #eee;
+  height: 100%;
+  max-height: 100%;
+  background-color: #111111;
+}
+body{
+  margin:0;
+  height: 100%;
+  max-height: 100%;
+}
+
+@import url(//fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic);
+
+#root {
+  height: 100%;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.App {
+  display: flex;
+  height: 100%;
+  font-family: 'Source Sans Pro', sans-serif;
+  flex-direction: column;
+}
+
+.Header {
+  height: 40px;
+}
+
+.Content {
+  text-align: left;
+  display: block;
+  flex: 1;
+  overflow: hidden;
+}
+
+.Router {
+  width: 100%;
+  height: 100%;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+.selectable {
+  -webkit-touch-callout: text; /* iOS Safari */
+    -webkit-user-select: text; /* Safari */
+     -khtml-user-select: text; /* Konqueror HTML */
+       -moz-user-select: text; /* Firefox */
+        -ms-user-select: text; /* Internet Explorer/Edge */
+            user-select: text; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+.control-panel {
+  background-color: #2b2b2b;
+  padding: 3px;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+  display: flex;
+}
+
+div:focus {
+  outline: 0;
+  outline: none;
+}
+
+/* Mobile dependent */
+
+.Header {
+  height: 80px;
+}
+
+@media (min-width: 1100px) {
+  .Header {
+    height: 40px;
+  }
+
+  .ControlButtons {
+    top: 50px;
+  }
+}

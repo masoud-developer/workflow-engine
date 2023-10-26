@@ -1,0 +1,94 @@
+
+.GraphNode {
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #323232;
+  line-height: 20px;
+  font-size: 14px;
+  font-weight: 400;
+  height: 100%;
+  display: flex;
+  text-rendering:optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+}
+
+.BackgroundLabels {
+  position: fixed;
+  z-index: 10000;
+  color: white;
+  bottom: 20px;
+  line-height: normal;
+}
+
+.BackgroundLabels.readonly {
+  left: 30px;
+}
+
+.BackgroundLabels.editable {
+  left: 300px;
+}
+
+.BackgroundLabels > .Title {
+  font-size: 30px;
+}
+
+.BackgroundLabels > .Description {
+  font-size: 20px;
+}
+
+.GraphRoot {
+  flex: 1;
+  overflow: scroll;
+  display: inline-block;
+  height: 100%;
+  background-color: #333
+}
+
+.PropertiesBar {
+  background-color: #2b2b2b;
+  width: 300px;
+  padding: 5px;
+  overflow: auto;
+}
+
+.PropertiesHeader {
+  color: #fff;
+  vertical-align: middle;
+  font-weight: 900;
+  font-size: 17px;
+  padding: 4px;
+}
+
+.PropertiesBar a {
+  text-decoration: none;
+}
+
+.PropertiesHeader a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.PropertiesHeader a:hover{
+  color: #005599;
+}
+
+.PropertiesBoxRoot {
+  padding-top: 10px;
+}
+
+.PropertiesBox {
+  color: #fff;
+}
+
+.PropertiesBoxHeader {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 5px 0px 3px 5px;
+}
+
+.PropertiesBoxContent {
+  color: #fff;
+  background-color: #404040;
+  padding: 4px 0px 4px 0px;
+}

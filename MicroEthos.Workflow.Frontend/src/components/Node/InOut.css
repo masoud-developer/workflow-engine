@@ -1,0 +1,80 @@
+.InOutListBackground {
+  padding: grid;
+  min-height: 100%;
+  padding: 2px
+}
+
+.InOutListBackgroundDragging {
+  background: lightblue;
+}
+
+.InOutDiv {
+  user-select: none;
+  padding: 7px;
+  margin: 0;
+  background: transparent;
+}
+
+.InOutDivDragging {
+  background: transparent;
+}
+
+.InOutItem {
+  background-color: #404040;
+  color: white;
+  padding: 3px;
+  border: 1px solid #202020;
+  border-radius: 4px;
+  margin: 0px;
+}
+
+.InOutItem .Remove {
+  color: pink;
+  float: right;
+  cursor: pointer;
+  width: 12px;
+}
+
+.InOutItem .Remove.hover {
+  color: red;
+}
+
+.InOutRow {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 30% 70%;
+  grid-row-gap: 3px;
+}
+
+.InOutCellTitle {
+  float: left;
+  padding-left: 5px
+}
+
+.InOutCellValue {
+  float: left;
+  padding-right: 5px;
+  display: flex;
+  align-items: center;
+  margin: 2px;
+}
+
+.InOutCellValue > .file-type-icon {
+    width: 17px;
+    height: 17px;
+    margin-left: 3px;
+}
+
+.InOutValue {
+  width: 100%;
+}
+
+.InOutValue > .CountsBlock {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 25% 25% 25% 25%;
+  padding: 3px;
+}
+.InOutValue > .CountsBlock > .Cell {
+  text-align: center;
+}

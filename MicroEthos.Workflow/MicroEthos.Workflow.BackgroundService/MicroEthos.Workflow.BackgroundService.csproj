@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\MicroEthos.Workflow.Business\MicroEthos.Workflow.Business.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="MicroEthos.Common">
+        <HintPath>..\..\MicroEthos.Common\MicroEthos.Common\bin\Debug\net6.0\MicroEthos.Common.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="MicroEthos.Common" Version="1.1.6" />
+      <PackageReference Include="MicroEthos.Common.BackgroundServices" Version="1.0.43" />
+      <PackageReference Include="MicroEthos.Common.Providers.Queue.RabbitMQ" Version="1.0.23" />
+    </ItemGroup>
+
+</Project>

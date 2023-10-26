@@ -1,0 +1,71 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroEthos.Workflow.Business", "MicroEthos.Workflow.Business\MicroEthos.Workflow.Business.csproj", "{888C09FF-EFC9-4CB6-9AC2-44EB1BB193B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroEthos.Workflow.DataAccess", "MicroEthos.Workflow.DataAccess\MicroEthos.Workflow.DataAccess.csproj", "{8643FFBB-647E-4B41-A7BD-735D81CAA6A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroEthos.Workflow.Server", "MicroEthos.Workflow.Server\MicroEthos.Workflow.Server.csproj", "{F34D0BD7-E1BE-4FF8-BB20-57340E92F74A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroEthos.Workflow.BackgroundService", "MicroEthos.Workflow.BackgroundService\MicroEthos.Workflow.BackgroundService.csproj", "{3D5C20B8-D9D3-49D4-8436-2F94B3A878D9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docker", "Docker", "{FFA3F5C2-E3BB-4CCD-BB5A-080924EB67C3}"
+	ProjectSection(SolutionItems) = preProject
+		Dockerfile-Background = Dockerfile-Background
+		Dockerfile-Server = Dockerfile-Server
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroEthos.Workflow.Abstraction", "MicroEthos.Workflow.Abstraction\MicroEthos.Workflow.Abstraction.csproj", "{6C350FD5-A045-420F-89F6-6EFFFC4CBDD3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SampleData", "SampleData", "{102BE3D5-59BC-4300-B633-78B5186B051B}"
+	ProjectSection(SolutionItems) = preProject
+		SampleRequest.json = SampleRequest.json
+		Test.json = Test.json
+		Test2.json = Test2.json
+		Test4.json = Test4.json
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroEthos.Workflow.Tests.Integration", "MicroEthos.Workflow.Tests.Integration\MicroEthos.Workflow.Tests.Integration.csproj", "{47252AE3-4996-4CE3-BE71-717BA7D0C4BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroEthos.Workflow.Tests.Unit", "MicroEthos.Workflow.Tests.Unit\MicroEthos.Workflow.Tests.Unit.csproj", "{BFCF62CB-FF84-40E5-8F7A-DFBA04EF0249}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CI-CD", "CI-CD", "{E2330A90-F1AE-40BE-B758-CC62526FDBFD}"
+	ProjectSection(SolutionItems) = preProject
+		.gitlab-ci.yml = .gitlab-ci.yml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{888C09FF-EFC9-4CB6-9AC2-44EB1BB193B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{888C09FF-EFC9-4CB6-9AC2-44EB1BB193B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{888C09FF-EFC9-4CB6-9AC2-44EB1BB193B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{888C09FF-EFC9-4CB6-9AC2-44EB1BB193B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8643FFBB-647E-4B41-A7BD-735D81CAA6A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8643FFBB-647E-4B41-A7BD-735D81CAA6A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8643FFBB-647E-4B41-A7BD-735D81CAA6A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8643FFBB-647E-4B41-A7BD-735D81CAA6A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F34D0BD7-E1BE-4FF8-BB20-57340E92F74A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F34D0BD7-E1BE-4FF8-BB20-57340E92F74A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F34D0BD7-E1BE-4FF8-BB20-57340E92F74A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F34D0BD7-E1BE-4FF8-BB20-57340E92F74A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D5C20B8-D9D3-49D4-8436-2F94B3A878D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D5C20B8-D9D3-49D4-8436-2F94B3A878D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D5C20B8-D9D3-49D4-8436-2F94B3A878D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D5C20B8-D9D3-49D4-8436-2F94B3A878D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C350FD5-A045-420F-89F6-6EFFFC4CBDD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C350FD5-A045-420F-89F6-6EFFFC4CBDD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C350FD5-A045-420F-89F6-6EFFFC4CBDD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C350FD5-A045-420F-89F6-6EFFFC4CBDD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47252AE3-4996-4CE3-BE71-717BA7D0C4BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47252AE3-4996-4CE3-BE71-717BA7D0C4BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47252AE3-4996-4CE3-BE71-717BA7D0C4BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47252AE3-4996-4CE3-BE71-717BA7D0C4BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFCF62CB-FF84-40E5-8F7A-DFBA04EF0249}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFCF62CB-FF84-40E5-8F7A-DFBA04EF0249}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFCF62CB-FF84-40E5-8F7A-DFBA04EF0249}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFCF62CB-FF84-40E5-8F7A-DFBA04EF0249}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

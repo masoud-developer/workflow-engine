@@ -1,0 +1,9 @@
+MicroEthos.Core.WorkflowDesigner/
+bin/
+obj/
+/packages/
+riderModule.iml
+/_ReSharper.Caches/
+*.sln.DotSettings.user
+logs/
+.idea
